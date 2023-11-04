@@ -1,0 +1,934 @@
+1)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table creating with HTML and CSS</title>
+</head>
+<body>
+    <style>
+        table{
+	        width: 40%;
+	        height: 200px;
+	        border-color: black;
+	        text-align: center;
+	        background-color:RGB(120 201 133);
+	        font-family: 'Times New Roman', Times, serif;
+	        font-size: large;
+        }
+        body{
+	        display: flex;
+	        align-items: center;
+	        justify-content: center;
+        }
+
+    </style>
+
+    <table border="2">
+        <caption>A test table with merged cells</caption>
+        <tr>
+            <th rowspan="2"> </th>
+            <th colspan="2">Average</th>
+            <th rowspan="2">Red <br>eyes</th>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>weight</td>
+        </tr>
+        <tr>
+            <td>Males</td>
+            <td>1.9</td>
+            <td>0.003</td>
+            <td>40%</td>
+        </tr>
+        <tr>
+            <td>Females</td>
+            <td>1.7</td>
+            <td>0.002</td>
+            <td>43%</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+2)
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Links</title>
+</head>
+<style>
+    center>a {
+        padding: 20px;
+    }
+
+    section {
+        height: 600px;
+    }
+</style>
+
+<body>
+    <center>
+        <a href="#Lesson1">Lesson-1</a>
+        <a href="#Lesson2">Lesson-2</a>
+        <a href="#Lesson3">Lesson-3</a>
+
+    </center>
+    <hr>
+    <section>
+        <h2 id="Lesson1">Introduction of Lesson-1</h2>
+        <p>This is sub Topic-1</p>
+        <p>This is sub Topic-2</p>
+    </section>
+
+    <section>
+        <h2 id="Lesson2">Introduction of Lesson-2</h2>
+        <p>This is sub Topic-1</p>
+        <p>This is sub Topic-2</p>
+    </section>
+
+    <section>
+        <h2 id="Lesson3">Introduction of Lesson-3</h2>
+        <p>This is sub Topic-1</p>
+        <p>This is sub Topic-2</p>
+    </section>
+
+</body>
+
+</html>
+
+3)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Form</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        div.input {
+            background-color: antiquewhite;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        label.email {
+            margin-right: 50px;
+        }
+        input {
+            border-radius: 6px;
+        }
+        form {
+            padding: 10px;
+        }
+        span.submit {
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <h1>Personal Details</h1>
+        <form action="" method="POST">
+            <label for="name">First Name : </label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"><br><br>
+            <label class="email" for="email">Email : </label>
+            <input type="email" id="email" name="email" placeholder="Enter valid email"><br><br>
+            <label for="password">Password : </label>
+            <input type="password" id="password" name="password" placeholder="Enter 6 digit password"><br><br>
+            <label for="gender">Gender:</label>
+            <input type="radio" name="gender" value="male">
+            <label for="gender">Male</label>
+            <input type="radio" name="gender" value="female">
+            <label for="gender">Female</label><br>
+
+            <span class="submit"><input type="submit" name="submit" value="Submit"></span>
+        </form>
+    </div>
+    <?php
+    // database connection code
+    if(isset($_POST['submit'])) {
+        $con = mysqli_connect('localhost', 'root', '', 'rakib');
+
+        // Get the post records
+        $txtName = $_POST['name'];
+        $txtEmail = $_POST['email'];
+        $txtPassword = $_POST['password'];
+        $txtGender = $_POST['gender'];
+
+        // Database insert SQL code
+        $sql = "INSERT INTO data(`name`, `email`, `password`, `gender`) VALUES ('$txtName', '$txtEmail', '$txtPassword', '$txtGender')";
+
+        // Insert into the database
+        $rs = mysqli_query($con, $sql);
+        if($rs) {
+            echo "Contact Records Inserted";
+        } else {
+            echo "Error: " . mysqli_error($con);
+        }
+    }
+    ?>
+</body>
+</html>
+
+4)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Form</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        div.input {
+            background-color: antiquewhite;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        label.email {
+            margin-right: 50px;
+        }
+        input {
+            border-radius: 6px;
+        }
+        form {
+            padding: 10px;
+        }
+        span.submit {
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <h1>Personal Details</h1>
+        <form name="myForm" action="" method="POST" onsubmit="return validateForm()">
+
+            <label for="name">First Name : </label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"><br><br>
+            <label class="email" for="email">Email : </label>
+            <input type="email" id="email" name="email" placeholder="Enter valid email"><br><br>
+            <label for="password">Password : </label>
+            <input type="password" id="password" name="password" placeholder="Enter 6 digit password"><br><br>
+
+            <label for="phone">Phone no:</label>
+            <input type="number" name="phone" id="phone" placeholder="Enter 10 digit phone number"><br><br>
+
+            <label for="gender">Gender:</label>
+            <input type="radio" name="gender" value="male">
+            <label for="gender">Male</label>
+            <input type="radio" name="gender" value="female">
+            <label for="gender">Female</label><br>
+
+            <span class="submit"><input type="submit" name="submit" value="Submit"></span>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Name validation
+            var name = document.forms["myForm"]["name"].value;
+            if (name.length < 6 || !/^[a-zA-Z]+$/.test(name)) {
+                alert("Name should contain alphabets, and the length should not be less than 6 characters.");
+                return false;
+            }
+            // Email validation
+            var email = document.forms["myForm"]["email"].value;
+            var emailRegex = /\S+@\S+\.\S+/;
+            if (email == "" || !emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            // Phone Number validation
+            var phone = document.forms["myForm"]["phone"].value;
+            var phoneRegex = /^\d{10}$/;
+            if (phone == "" || !phoneRegex.test(phone)) {
+                alert("Please enter a valid phone number with 10 digits only.");
+                return false;
+            }
+            // Password validation
+            var password = document.forms["myForm"]["password"].value;
+            if (password == "" || password.length < 6) {
+                alert("Please enter a valid password with a length not less than 6 characters.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <?php
+    if (isset($_POST['submit'])) {
+        $con = mysqli_connect('localhost', 'root', '', 'mustofa');
+
+        $txtName = $_POST['name'];
+        $txtEmail = $_POST['email'];
+        $txtPhone = $_POST['phone']; // Changed to 'phone' for consistency
+        $txtPassword = $_POST['password']; // Changed to 'password' for consistency
+        $txtGender = $_POST['gender'];
+
+        $sql = "INSERT INTO data (`name`, `email`, `password`, `phone`, `gender`) VALUES ('$txtName', '$txtEmail', '$txtPassword', '$txtPhone', '$txtGender')";
+
+        $rs = mysqli_query($con, $sql);
+        if ($rs) {
+            echo "Contact Records Inserted";
+        } else {
+            echo "Error: " . mysqli_error($con);
+        }
+    }
+    ?>
+</body>
+</html>
+
+5)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+</head>
+<frameset cols="250,*">
+    <frame src="welcome.html" name="left_vertical">
+    <frameset rows="400,350">
+        <frame src="ice.html" name="right_top">
+        <frame src="it.html" name="right_bottom">
+    </frameset>
+</frameset>
+</html>
+
+6)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Iterate For Loop</title>
+</head>
+<body>
+    <h2>Even Odd program:</h2>
+    <script>
+        var last = prompt("Enter for loop ending value");
+
+        for (var x = 0; x <= last; x++) 
+        {
+
+            if (x % 2 == 0) 
+            {
+                document.write(x + " is even\n");
+                document.write("<br>");
+            } 
+            else 
+            {
+                document.write(x + " is odd\n");
+                document.write("<br>");
+                
+            }
+        }
+
+    </script>
+</body>
+</html>
+
+7)
+<?php
+$unit = ""; // Initialize the $unit variable
+$p = "";
+
+if (isset($_POST["unit"])) {
+    $unit = $_POST["unit"];
+    $price = 0;
+
+    if ($unit <= 50) {
+        $price = $unit * 3.5;
+    } elseif ($unit > 50 && $unit <= 100) {
+        $price = $unit * 4.0;
+    } elseif ($unit > 100 && $unit <= 200) {
+        $price = $unit * 5.20;
+    } else {
+        $price = $unit * 6.50;
+    }
+
+    $p = "<p> Unit is: " . $unit . " Bill is " . $price . " Taka</p>";
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Bill</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .form_style {
+            width: 300px;
+            margin: auto;
+        }
+
+        form {
+            margin-top: 80px;
+            font-family: arial;
+        }
+
+        form label {
+            margin-bottom: 10px;
+            display: block;
+            font-size: 18px;
+        }
+
+        form button {
+            margin-top: 10px;
+            padding: 3px 10px;
+            border: 1px solid #000;
+            background: #000;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_style">
+        <form action="" method="post">
+            <label for="unit">Enter your number of units</label>
+            <input type="number" id="unit" name="unit" value="<?php echo $unit ?>">
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <?php echo $p; ?>
+    </div>
+</body>
+</html>
+
+8)
+<?php
+$sum = null;
+$opa = null;
+$x = 0;
+$y = 0;
+
+if (isset($_POST["ADD"])) {
+    $x = $_POST['fnum'];
+    $y = $_POST['snum'];
+    $opa = '+';
+    $sum = $x + $y;
+} else if (isset($_POST["SUB"])) {
+    $x = $_POST['fnum'];
+    $y = $_POST['snum'];
+    $opa = '-';
+    $sum = $x - $y;
+} else if (isset($_POST["MUL"])) {
+    $x = $_POST['fnum'];
+    $y = $_POST['snum'];
+    $opa = '*';
+    $sum = $x * $y;
+} else if (isset($_POST["DIV"])) {
+    $x = $_POST['fnum'];
+    $y = $_POST['snum'];
+    $opa = '/';
+    $sum = number_format($x / $y, 3);
+}
+?>
+
+<html>
+<head>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-size: 30px;
+        }
+
+        .div2 {
+            height: 80%;
+            width: 45%;
+            float: left;
+            font-size: 30px;
+            margin: auto;
+            border-radius: 8px;
+            border-color: gold;
+        }
+
+        .div1 {
+            height: 80%;
+            width: 50%;
+            float: right;
+            border-radius: 8px;
+            border-color: gold;
+        }
+
+        .cal {
+            height: 20%;
+            font-size: 50px;
+            color: blue;
+            margin: auto;
+            border-radius: 8px;
+            border-color: gold;
+        }
+
+        input {
+            font-size: 30px;
+            font-family: 'Times New Roman';
+        }
+
+        textarea {
+            font-size: 30px;
+            border-radius: 8px;
+        }
+
+        label {
+            color: red;
+        }
+
+        .vl {
+            border-right: 2px solid black;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cal">A simple Calculator</div>
+    <hr/>
+    <div class="div1">
+        <label>Result</label>
+        <hr/>
+        <textarea rows="3" cols="33">
+            <?php
+            if ($sum == null) {
+                echo "$sum";
+            } else {
+                echo " $x $opa $y = $sum";
+            }
+            ?>
+        </textarea>
+    </div>
+    <div class="div2">
+        <div class="vl">
+            <form method="post" action="calculator.php">
+                <label>Input</label>
+                <hr/>
+                Enter 1st number <input type="text" name="fnum" required/><br/><br/>
+                Enter 2nd number <input type="text" name="snum" required/><hr/>
+                <input type="submit" name="ADD" value="ADD"/>
+                <input type="submit" name="SUB" value="SUB"/>
+                <input type="submit" name="MUL" value="MUL"/>
+                <input type="submit" name="DIV" value="DIV"/>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+9)
+task 1 & 2:
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Create a connection to MySQL
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Create a database called "Programmer" if it doesn't exist
+$sql = "CREATE DATABASE IF NOT EXISTS Student";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Database created successfully<br>";
+} else {
+    echo "Error creating database: " . $conn->error;
+}
+
+// Select the "Programmer" database
+$conn->select_db("Student");
+
+// SQL statement to create the "Stu_Reg" table
+$sql = "CREATE TABLE IF NOT EXISTS Semester_Reg (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Session VARCHAR(255) NOT NULL,
+    Phone_No VARCHAR(15),
+    City VARCHAR(255),
+    Gender ENUM('Male', 'Female') NOT NULL
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// Close the MySQL connection
+$conn->close();
+?>
+
+task 3-6:
+<?php
+$connect = mysqli_connect("localhost", "root", "", "Student"); // Establish a connection to the database
+
+// Insert operation
+if (isset($_POST["insert"])) {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+    $sess = $_POST["session"];
+    $phone = $_POST["ph_number"];
+    $city = $_POST["city"];
+    $gender = $_POST["gender"];
+    
+    // SQL query to insert a new record into the 'semester_reg' table
+    $insert = "INSERT INTO `semester_reg` (`ID`, `Name`, `Session`, `Phone_No`, `City`, `Gender`) VALUES ('$id','$name','$sess', '$phone', '$city', '$gender')";
+    
+    $result = mysqli_query($connect, $insert);
+    
+    if ($result == 1) {
+        echo "Successfully insert a record!";
+    } else {
+        echo "Unsuccessful";
+    }
+}
+
+// Delete operation
+if (isset($_POST["delete"])) {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+    $sess = $_POST["session"];
+    
+    // SQL query to delete a record from the 'semester_reg' table
+    $delete = "DELETE FROM semester_reg WHERE ID='$id' AND Name='$name' AND Session='$sess'";
+    
+    $result = mysqli_query($connect, $delete);
+    
+    if ($result == 1) {
+        echo "Successfully delete your record!";
+    } else {
+        echo "Unsuccessful";
+    }
+}
+
+// Update operation
+if (isset($_POST["update"])) {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+    $sess = $_POST["session"];
+    $phone = $_POST["ph_number"];
+    $city = $_POST["city"];
+    $gender = $_POST["gender"];
+    
+    // SQL query to update a record in the 'semester_reg' table
+    $update = "UPDATE semester_reg SET Name='$name', Session='$sess', Phone_No='$phone', City='$city', Gender='$gender' WHERE ID='$id'";
+    
+    $result = mysqli_query($connect, $update);
+    
+    if ($result == 1) {
+        echo "Successfully updated your record!";
+    } else {
+        echo "Unsuccessful";
+    }
+}
+
+// Show data operation
+if (isset($_POST["select"])) {
+    $query = "SELECT * FROM semester_reg";
+    $result = mysqli_query($connect, $query);
+    
+    if ($result == true) {
+        echo "All Registered Students List <br>";
+        echo "<table cellpadding=10 border='1'> <tr> <th>ID</th> <th>Name</th> <th>Session</th> <th>Phone Number</th> <th>City</th> <th>Gender</th> </tr>";
+        
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                echo "<tr>";
+                echo "<td style='color:black'>" . $row['ID'] . "</td>";
+                echo "<td style='color:black'>" . $row['Name'] . "</td>";
+                echo "<td style='color:black'>" . $row['Session'] . "</td>";
+                echo "<td style='color:black'>" . $row['Phone_No'] . "</td>";
+                echo "<td style='color:black'>" . $row['City'] . "</td>";
+                echo "<td style='color:black'>" . $row['Gender'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        }
+    } else {
+        echo "No record found!";
+    }
+}
+?>
+
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        input {
+            font-size: 20px;
+        }
+
+        table {
+            margin: auto;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Student's Registration Form</h2>
+    <form method="post" action="">
+        <table border="1" style="text-align:left">
+            <tr>
+                <th>ID</th>
+                <td><input type="text" name="id" required></td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            <tr>
+                <th>Session</th>
+                <td><input type="text" name="session" required></td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td><input type="text" name="ph_number"></td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td><input type="text" name="city" value=""></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <input type="radio" name="gender" value="Male" checked> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="submit" name="insert" value="Insert">
+                    <input type="submit" name="delete" value="Delete">
+                    <input type="submit" name="update" value="Update">
+                    <input type="submit" name="select" value="Show">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <label style="color:red">N.B. </label>
+        1. To delete a record, please enter your ID, Name, and Session.<br>
+        2. You can update all information except the ID Number.<br>
+        3. To show all records, enter your ID, Name, and Session.
+    </form>
+</body>
+</html>
+
+10)
+task 1 & 2:
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Create a connection to MySQL
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Create a database called "Programmer" if it doesn't exist
+$sql = "CREATE DATABASE IF NOT EXISTS Programmer";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Database created successfully<br>";
+} else {
+    echo "Error creating database: " . $conn->error;
+}
+
+// Select the "Programmer" database
+$conn->select_db("Programmer");
+
+// SQL statement to create the "Stu_Reg" table
+$sql = "CREATE TABLE IF NOT EXISTS Stu_Reg (
+    ID VARCHAR(30) PRIMARY KEY,
+    Name TEXT,
+    Image VARCHAR(400),
+    Password VARCHAR(20) NOT NULL
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// Close the MySQL connection
+$conn->close();
+?>
+
+Task 3-5:
+<?php
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "Programmer";
+
+// Create a connection to the database
+$connect = mysqli_connect($host, $username, $password, $database);
+
+if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Task 1: Create the "Stu_Reg" table
+$createTableSQL = "CREATE TABLE IF NOT EXISTS Stu_Reg (
+    ID VARCHAR(30) PRIMARY KEY NOT NULL,
+    Name TEXT,
+    Image VARCHAR(400),
+    Password VARCHAR(20) NOT NULL
+)";
+$result = mysqli_query($connect, $createTableSQL);
+
+if ($result) {
+    echo "Task 1: 'Stu_Reg' table created successfully.<br>";
+} else {
+    echo "Error creating table: " . mysqli_error($connect);
+}
+
+// Task 3: Insert sample data with password encryption and image upload
+if (isset($_POST["insert"])) {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+    $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+
+    // Handle file upload
+    $image = "";
+    if ($_FILES["image"]["name"]) {
+        $imageDir = "uploads/";
+        if (!is_dir($imageDir)) {
+            mkdir($imageDir);
+        }
+        $imagePath = $imageDir . $_FILES["image"]["name"];
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath)) {
+            $image = $imagePath;
+        }
+    }
+
+    $insertSQL = "INSERT INTO Stu_Reg (ID, Name, Image, Password) VALUES ('$id', '$name', '$image', '$password')";
+    $result = mysqli_query($connect, $insertSQL);
+
+    if ($result) {
+        echo "Task 3: Data inserted successfully.<br>";
+    } else {
+        echo "Error inserting data: " . mysqli_error($connect);
+    }
+}
+
+// Task 4: Show all records based on ID and name
+if (isset($_POST["view"])) {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+
+    $selectSQL = "SELECT * FROM Stu_Reg WHERE ID='$id' AND Name='$name'";
+    $result = mysqli_query($connect, $selectSQL);
+
+    if ($result) {
+        echo "Task 4: View Records:<br>";
+        echo "<table border='1'><tr><th>ID</th><th>Name</th><th>Image</th><th>Password</th></tr>";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr><td>" . $row['ID'] . "</td><td>" . $row['Name'] . "</td><td>" . $row['Image'] . "</td><td>" . $row['Password'] . "</td></tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "Task 4: No record found!<br>";
+    }
+}
+
+// Task 5: Delete a single record based on ID and name
+if (isset($_POST["delete"])) {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+
+    $deleteSQL = "DELETE FROM Stu_Reg WHERE ID='$id' AND Name='$name'";
+    $result = mysqli_query($connect, $deleteSQL);
+
+    if ($result) {
+        echo "Task 5: Record deleted successfully.<br>";
+    } else {
+        echo "Task 5: Error deleting record: " . mysqli_error($connect);
+    }
+}
+
+mysqli_close($connect);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+</head>
+<body>
+    <h2>Student Registration Form</h2>
+    <form method="post" action="programmer.php" enctype="multipart/form-data">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <td><input type="text" name="id" required></td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><input type="file" name="image"></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="insert" value="Insert Data">
+                    <input type="submit" name="view" value="View Data">
+                    <input type="submit" name="delete" value="Delete Data">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+  
